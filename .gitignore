@@ -1,0 +1,10 @@
+# ビルド成果物
+bin/
+obj/
+.vs/
+*.user
+*.aps
+
+# 実行時に生成されるもの
+logs/
+usersettings/
