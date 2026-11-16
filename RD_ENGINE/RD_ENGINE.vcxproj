@@ -41,13 +41,26 @@
       <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
-  <!-- src 以下の .cpp / .h は自動で入る（VS で追加しなくてよい） -->
+  <!-- ソースファイル（VS の「追加」や「プロジェクトに含める」でここに書き足される） -->
   <ItemGroup>
-    <ClCompile Include="src\**\*.cpp" Exclude="src\RdPch.cpp" />
+    <ClCompile Include="src\math\Matrix3.cpp" />
+    <ClCompile Include="src\math\Matrix4.cpp" />
+    <ClCompile Include="src\math\Quaternion.cpp" />
     <ClCompile Include="src\RdPch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClInclude Include="src\**\*.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\core\Assert.h" />
+    <ClInclude Include="src\math\Matrix3.h" />
+    <ClInclude Include="src\math\Matrix4.h" />
+    <ClInclude Include="src\math\Quaternion.h" />
+    <ClInclude Include="src\math\Color.h" />
+    <ClInclude Include="src\math\Vector2.h" />
+    <ClInclude Include="src\math\Vector3.h" />
+    <ClInclude Include="src\math\Vector4.h" />
+    <ClInclude Include="src\RdPch.h" />
+    <ClInclude Include="src\math\MathUtility.h" />
   </ItemGroup>
   <!-- Game 構成（RD_EDITOR=0）ではエディタを丸ごと外す -->
   <ItemGroup Condition="'$(RdEditor)'=='0'">

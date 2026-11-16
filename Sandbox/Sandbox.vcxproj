@@ -55,9 +55,9 @@ xcopy /y /d "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(OutDi
       <Message>DXC のランタイムをコピー</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+  <!-- ソースファイル（VS の「追加」や「プロジェクトに含める」でここに書き足される） -->
   <ItemGroup>
-    <ClCompile Include="src\**\*.cpp" />
-    <ClInclude Include="src\**\*.h" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RD_ENGINE\RD_ENGINE.vcxproj">
