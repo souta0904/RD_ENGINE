@@ -53,6 +53,7 @@
   <ItemGroup>
     <ClInclude Include="src\core\Assert.h" />
     <ClInclude Include="src\math\geometry\AABB.h" />
+    <ClInclude Include="src\math\geometry\Intersection.h" />
     <ClInclude Include="src\math\geometry\Plane.h" />
     <ClInclude Include="src\math\geometry\Ray.h" />
     <ClInclude Include="src\math\Matrix3.h" />

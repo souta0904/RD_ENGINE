@@ -1,6 +1,6 @@
 #pragma once
-#include "Math/Geometry/AABB.h"
-#include "Math/Geometry/Ray.h"
+#include "math/geometry/AABB.h"
+#include "math/geometry/Ray.h"
 
 namespace rd
 {

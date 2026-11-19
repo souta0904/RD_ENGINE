@@ -1,6 +1,6 @@
 #include "RdPch.h"
-#include "Quaternion.h"
-#include "Matrix4.h"
+#include "math/Quaternion.h"
+#include "math/Matrix4.h"
 
 namespace rd
 {

@@ -1,6 +1,6 @@
 #pragma once
-#include "Quaternion.h"
-#include "Vector3.h"
+#include "math/Quaternion.h"
+#include "math/Vector3.h"
 
 namespace rd
 {

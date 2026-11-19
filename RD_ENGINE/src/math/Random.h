@@ -1,6 +1,6 @@
 #pragma once
-#include "Color.h"
-#include "Vector3.h"
+#include "math/Color.h"
+#include "math/Vector3.h"
 #include <random>
 
 namespace rd
@@ -13,8 +13,13 @@ namespace rd
 		// 種を決めると、そのスレッドで同じ順番の乱数が出る（再現したいテストなどで使う）
 		static void Seed(uint32_t seed) { Engine().seed(seed); }
 
-		// [min, max]
-		static int Range(int min, int max) { return std::uniform_int_distribution<int>(min, max)(Engine()); }
+		// [min, max)。Unity と同じく max は含まない（Range(1, 6) は 1～5）
+		// max が min 以下なら min を返す（範囲が空なので）
+		static int Range(int min, int max)
+		{
+			if (max <= min) { return min; }
+			return std::uniform_int_distribution<int>(min, max - 1)(Engine());
+		}
 		// [min, max)
 		static float Range(float min, float max) { return min + (max - min) * Value(); }
 		// [0, 1)
