@@ -43,14 +43,17 @@
   </ItemDefinitionGroup>
   <!-- ソースファイル（VS の「追加」や「プロジェクトに含める」でここに書き足される） -->
   <ItemGroup>
+    <ClCompile Include="src\core\utility\FileUtility.cpp" />
     <ClCompile Include="src\math\Matrix3.cpp" />
     <ClCompile Include="src\math\Matrix4.cpp" />
     <ClCompile Include="src\math\Quaternion.cpp" />
     <ClCompile Include="src\RdPch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\core\utility\StringUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\utility\FileUtility.h" />
     <ClInclude Include="src\core\Assert.h" />
     <ClInclude Include="src\math\geometry\AABB.h" />
     <ClInclude Include="src\math\geometry\Intersection.h" />
@@ -66,6 +69,7 @@
     <ClInclude Include="src\math\Vector4.h" />
     <ClInclude Include="src\RdPch.h" />
     <ClInclude Include="src\math\MathUtility.h" />
+    <ClInclude Include="src\core\utility\StringUtility.h" />
   </ItemGroup>
   <!-- Game 構成（RD_EDITOR=0）ではエディタを丸ごと外す -->
   <ItemGroup Condition="'$(RdEditor)'=='0'">
