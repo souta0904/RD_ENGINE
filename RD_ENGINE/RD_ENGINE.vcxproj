@@ -65,6 +65,9 @@
     <ClCompile Include="src\core\utility\StringUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\time\FrameStats.h" />
+    <ClInclude Include="src\core\time\ScopedTimer.h" />
+    <ClInclude Include="src\core\time\Timer.h" />
     <ClInclude Include="src\core\utility\FileUtility.h" />
     <ClInclude Include="src\core\Assert.h" />
     <ClInclude Include="src\math\geometry\AABB.h" />
