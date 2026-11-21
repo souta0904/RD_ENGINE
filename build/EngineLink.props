@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- エンジンが使う Windows のライブラリをリンクし、DXC（シェーダーコンパイラ）の DLL を出力先へコピーする。
+     これを読むのは「エンジンのコードを最後にリンクするプロジェクト」で、構成によって変わる。
+     ・Debug / Release: エンジンが RdEngine.dll なので、RD_ENGINE.vcxproj 自身が読む
+     ・Game: エンジンは静的ライブラリで、exe に入るので、Sandbox などゲームの vcxproj が読む -->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemDefinitionGroup>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <!-- 4099: ライブラリの PDB が見つからない警告。デバッグ情報が少し欠けるだけなので消す -->
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>d3d12.lib;dxgi.lib;dxguid.lib;dxcompiler.lib;xinput.lib;xaudio2.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxcompiler.dll" "$(OutDir)" &gt;nul
+xcopy /y /d "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(OutDir)" &gt;nul</Command>
+      <Message>DXC のランタイムをコピー</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+</Project>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- RD ENGINE 本体（静的ライブラリ） -->
+<!-- RD ENGINE 本体。Debug / Release では RdEngine.dll、Game では静的ライブラリ RdEngine.lib -->
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -20,10 +20,16 @@
     <ProjectGuid>{988D602A-4C68-4666-A775-539F646C9518}</ProjectGuid>
     <RootNamespace>RD_ENGINE</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <!-- エンジン自身のビルドであることを Common.props に伝える（RD_API が dllexport になる）。
+         Common.props を読むより前に決めておく必要があるので、ここに書く -->
+    <RdBuildingEngine>true</RdBuildingEngine>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <!-- ConfigurationType は Microsoft.Cpp.props より前に決める決まりなので、
+         Common.props の RdEngineDll は使えず、構成名で直接分ける -->
+    <ConfigurationType Condition="'$(Configuration)'=='Game'">StaticLibrary</ConfigurationType>
+    <ConfigurationType Condition="'$(Configuration)'!='Game'">DynamicLibrary</ConfigurationType>
     <PlatformToolset>v145</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -31,7 +37,13 @@
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\build\Common.props" />
+    <!-- DLL のときはエンジン自身がリンクするので、Windows のライブラリをここで読む -->
+    <Import Project="..\build\EngineLink.props" Condition="'$(RdEngineDll)'=='1'" />
   </ImportGroup>
+  <PropertyGroup>
+    <!-- 出力の名前（RdEngine.dll / RdEngine.lib）。プロジェクト名の RD_ENGINE とは分ける -->
+    <TargetName>RdEngine</TargetName>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
@@ -43,14 +55,17 @@
   </ItemDefinitionGroup>
   <!-- ソースファイル（VS の「追加」や「プロジェクトに含める」でここに書き足される） -->
   <ItemGroup>
+    <ClCompile Include="src\core\utility\FileUtility.cpp" />
     <ClCompile Include="src\math\Matrix3.cpp" />
     <ClCompile Include="src\math\Matrix4.cpp" />
     <ClCompile Include="src\math\Quaternion.cpp" />
     <ClCompile Include="src\RdPch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\core\utility\StringUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\utility\FileUtility.h" />
     <ClInclude Include="src\core\Assert.h" />
     <ClInclude Include="src\math\geometry\AABB.h" />
     <ClInclude Include="src\math\geometry\Intersection.h" />
@@ -66,6 +81,7 @@
     <ClInclude Include="src\math\Vector4.h" />
     <ClInclude Include="src\RdPch.h" />
     <ClInclude Include="src\math\MathUtility.h" />
+    <ClInclude Include="src\core\utility\StringUtility.h" />
   </ItemGroup>
   <!-- Game 構成（RD_EDITOR=0）ではエディタを丸ごと外す -->
   <ItemGroup Condition="'$(RdEditor)'=='0'">
