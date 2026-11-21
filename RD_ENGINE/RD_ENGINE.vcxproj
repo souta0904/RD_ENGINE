@@ -68,9 +68,11 @@
     <ClInclude Include="src\core\utility\FileUtility.h" />
     <ClInclude Include="src\core\Assert.h" />
     <ClInclude Include="src\math\geometry\AABB.h" />
+    <ClInclude Include="src\math\geometry\Frustum.h" />
     <ClInclude Include="src\math\geometry\Intersection.h" />
     <ClInclude Include="src\math\geometry\Plane.h" />
     <ClInclude Include="src\math\geometry\Ray.h" />
+    <ClInclude Include="src\math\Math.h" />
     <ClInclude Include="src\math\Matrix3.h" />
     <ClInclude Include="src\math\Matrix4.h" />
     <ClInclude Include="src\math\Quaternion.h" />
