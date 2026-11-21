@@ -10,13 +10,30 @@
     <RdEditor Condition="'$(RdEditor)'==''">1</RdEditor>
     <!-- Game は Release と同じ最適化設定を使う -->
     <RdOptimized Condition="'$(Configuration)'=='Release' or '$(Configuration)'=='Game'">true</RdOptimized>
+    <!-- エンジンを DLL（RdEngine.dll）にするか。
+         エディタ入りの構成（Debug / Release）では DLL にする。あとでゲームのコードを DLL にして
+         エディタを動かしたまま読み直す（ホットリロード）ためで、エンジンは 1 つの DLL を皆で使う。
+         Game 構成（配布用）では今までどおり、エンジンを静的ライブラリにして 1 つの exe にまとめる -->
+    <RdEngineDll Condition="'$(RdEditor)'=='1'">1</RdEngineDll>
+    <RdEngineDll Condition="'$(RdEngineDll)'==''">0</RdEngineDll>
+    <!-- RD_API: エンジンの外から使うクラスと関数に付ける印（Unreal の ENGINE_API にあたる）。
+         ・エンジン自身をビルドするとき（RdBuildingEngine=true）は dllexport ＝ DLL から外へ出す
+         ・エンジンを使う側（Sandbox など）は dllimport ＝ DLL から取り込む
+         ・Game 構成では DLL を使わないので空にする（付けても何も起きない）
+         RdBuildingEngine は RD_ENGINE.vcxproj が、この props を読む前に true にしている -->
+    <RdApiDefine Condition="'$(RdEngineDll)'=='1' and '$(RdBuildingEngine)'=='true'">RD_API=__declspec(dllexport)</RdApiDefine>
+    <RdApiDefine Condition="'$(RdEngineDll)'=='1' and '$(RdBuildingEngine)'!='true'">RD_API=__declspec(dllimport)</RdApiDefine>
+    <RdApiDefine Condition="'$(RdEngineDll)'=='0'">RD_API=</RdApiDefine>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>NOMINMAX;WIN32_LEAN_AND_MEAN;_UNICODE;UNICODE;RD_EDITOR=$(RdEditor);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;WIN32_LEAN_AND_MEAN;_UNICODE;UNICODE;RD_EDITOR=$(RdEditor);RD_ENGINE_DLL=$(RdEngineDll);$(RdApiDefine);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <!-- 4251 / 4275: DLL から出すクラスが std の型を持つ・継承するときの警告。
+           エンジンとゲームは同じコンパイラと同じ CRT で作るので問題にならず、消しておく -->
+      <DisableSpecificWarnings>4251;4275;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <AdditionalOptions>/utf-8 /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>
