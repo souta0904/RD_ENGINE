@@ -20,10 +20,10 @@ namespace rd::Log
 
 	RD_API void SetMinLevel(Level minLevel);
 
-#define LOG_FUNCTION(Name, Level)                                    \
-	template <class... Args>                                         \
-	void Name(std::format_string<Args...> fmt, Args&&... args)       \
-	{                                                                \
+#define LOG_FUNCTION(Name, Level) \
+	template <class... Args> \
+	void Name(std::format_string<Args...> fmt, Args&&... args) \
+	{ \
 		Write(Level, std::format(fmt, std::forward<Args>(args)...)); \
 	}
 

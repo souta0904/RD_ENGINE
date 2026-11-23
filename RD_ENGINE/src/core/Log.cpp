@@ -9,7 +9,7 @@ namespace rd::Log
 {
 	namespace
 	{
-		std::mutex sMutex;
+		std::mutex sMutex;// sFile用
 		std::ofstream sFile;
 
 		Level sMinLevel = Level::Debug;
@@ -23,6 +23,7 @@ namespace rd::Log
 			case Level::Warning: return "Warning";
 			case Level::Error: return "Error";
 			}
+
 			return "Unknown";
 		}
 	}
@@ -35,6 +36,7 @@ namespace rd::Log
 		{
 			std::filesystem::create_directories(p.parent_path());
 		}
+
 		sFile.open(p, std::ios::out | std::ios::trunc);
 	}
 
