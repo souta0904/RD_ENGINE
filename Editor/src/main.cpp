@@ -1,20 +1,17 @@
+#include <Windows.h>
 #include "core/Log.h"
-#include "platform/Window.h"
+#include "Engine.h"
 
 int WINAPI wWinMain(HINSTANCE, HINSTANCE, PWSTR, int)
 {
 	rd::Log::Initialize("logs/Log.txt");
-	rd::Log::Debug("Editor: Started");
 
-	rd::Window window;
-	if (window.Initialize(1920, 1080, "RD ENGINE"))
-	{
-		while (!window.ProcessMessage())
-		{
-		}
-		window.Terminate();
-	}
+	rd::EngineConfig config;
+	config.title = "Engine Test";
+
+	rd::Engine engine;
+	int result = engine.Run(config);
 
 	rd::Log::Shutdown();
-	return 0;
+	return result;
 }

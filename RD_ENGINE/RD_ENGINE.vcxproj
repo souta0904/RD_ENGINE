@@ -11,15 +11,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\core\Log.cpp" />
     <ClCompile Include="src\utility\StringUtility.cpp" />
     <ClCompile Include="src\platform\Window.cpp" />
     <ClCompile Include="src\utility\JsonUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\Api.h" />
     <ClInclude Include="src\core\Assert.h" />
     <ClInclude Include="src\core\Log.h" />
+    <ClInclude Include="src\EngineConfig.h" />
     <ClInclude Include="src\utility\StringUtility.h" />
     <ClInclude Include="src\platform\Window.h" />
     <ClInclude Include="src\utility\JsonUtility.h" />

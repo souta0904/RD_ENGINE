@@ -10,12 +10,17 @@
 
 namespace rd
 {
+	/// <summary>
+	/// ウィンドウ
+	/// </summary>
 	class RD_API Window
 	{
 	public:
 		bool Initialize(uint32_t clientWidth, uint32_t clientHeight, const std::string& title);
 		void Terminate();
 
+		// メッセージを処理
+		// ループ終了でtrueを返す
 		bool ProcessMessage();
 
 		void SetTitle(const std::string& title);
@@ -28,9 +33,11 @@ namespace rd
 		bool IsFullscreen() const { return mIsFullscreen; }
 
 	private:
+		// ウィンドウプロシージャ
 		static LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 		LRESULT HandleMessage(UINT msg, WPARAM wParam, LPARAM lParam);
 
+		// ウィンドウの配置情報
 		bool LoadPlacement();
 		void SavePlacement();
 
