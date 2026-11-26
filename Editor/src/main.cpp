@@ -1,5 +1,5 @@
-#include <Windows.h>
 #include "GameLauncher.h"
+#include <Windows.h>
 
 int WINAPI wWinMain(HINSTANCE, HINSTANCE, PWSTR, int)
 {

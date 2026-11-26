@@ -5,3 +5,5 @@
 #else
 #define RD_API __declspec(dllimport)
 #endif
+
+#pragma warning(disable: 4251 4275)

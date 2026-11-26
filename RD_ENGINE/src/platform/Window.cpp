@@ -1,7 +1,7 @@
 #include "platform/Window.h"
 #include "core/Log.h"
-#include "utility/JsonUtility.h"
-#include "utility/StringUtility.h"
+#include "core/utility/JsonUtility.h"
+#include "core/utility/StringUtility.h"
 
 namespace rd
 {
@@ -71,12 +71,13 @@ namespace rd
 		GetClientRect(mHWnd, &client);
 		mClientWidth = uint32_t(client.right - client.left);
 		mClientHeight = uint32_t(client.bottom - client.top);
+		mResized = false;
 
 		Log::Info("Window: Created ({}x{})", mClientWidth, mClientHeight);
 		return true;
 	}
 
-	void Window::Terminate()
+	void Window::Shutdown()
 	{
 		if (mHWnd)
 		{
@@ -98,6 +99,13 @@ namespace rd
 		}
 
 		return false;
+	}
+
+	bool Window::ConsumeResized()
+	{
+		bool resized = mResized;
+		mResized = false;
+		return resized;
 	}
 
 	void Window::SetTitle(const std::string& title)
@@ -165,8 +173,14 @@ namespace rd
 		case WM_SIZE:
 			if (wParam != SIZE_MINIMIZED)
 			{
-				mClientWidth = LOWORD(lParam);
-				mClientHeight = HIWORD(lParam);
+				uint32_t width = LOWORD(lParam);
+				uint32_t height = HIWORD(lParam);
+				if (width != mClientWidth || height != mClientHeight)
+				{
+					mClientWidth = width;
+					mClientHeight = height;
+					mResized = true;
+				}
 			}
 			return 0;
 

@@ -18,13 +18,13 @@
     <ClCompile Include="src\core\Log.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\utility\StringUtility.cpp">
+    <ClCompile Include="src\core\utility\StringUtility.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="src\platform\Window.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\utility\JsonUtility.cpp">
+    <ClCompile Include="src\core\utility\JsonUtility.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="src\Engine.cpp">
@@ -36,6 +36,9 @@
     <ClCompile Include="src\GameLauncher.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="src\rhi\device\GraphicsDevice.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Api.h">
@@ -44,13 +47,13 @@
     <ClInclude Include="src\core\Log.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\utility\StringUtility.h">
+    <ClInclude Include="src\core\utility\StringUtility.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="src\platform\Window.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\utility\JsonUtility.h">
+    <ClInclude Include="src\core\utility\JsonUtility.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="src\core\Assert.h">
@@ -66,6 +69,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="src\GameLauncher.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rhi\device\GraphicsDevice.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

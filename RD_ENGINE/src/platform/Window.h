@@ -2,10 +2,6 @@
 #include "Api.h"
 #include <cstdint>
 #include <string>
-
-#ifndef NOMINMAX
-#define NOMINMAX
-#endif
 #include <Windows.h>
 
 namespace rd
@@ -17,11 +13,13 @@ namespace rd
 	{
 	public:
 		bool Initialize(uint32_t clientWidth, uint32_t clientHeight, const std::string& title);
-		void Terminate();
+		void Shutdown();
 
 		// メッセージを処理
 		// ループ終了でtrueを返す
 		bool ProcessMessage();
+
+		bool ConsumeResized();
 
 		void SetTitle(const std::string& title);
 		void SetFullscreen(bool isFullscreen);
@@ -46,6 +44,7 @@ namespace rd
 		uint32_t mClientWidth = 0;
 		uint32_t mClientHeight = 0;
 		bool mIsFullscreen = false;
+		bool mResized = false;
 
 		WINDOWPLACEMENT mSavedPlacement = {};
 	};

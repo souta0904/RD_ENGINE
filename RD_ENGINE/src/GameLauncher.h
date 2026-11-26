@@ -8,7 +8,8 @@ namespace rd
 }
 
 #define RD_GAME_MAIN(ConfigureFunction) \
-extern "C" __declspec(dllexport) void RdConfigureGame(::rd::EngineConfig& config) \
+extern "C" __declspec(dllexport) \
+void RdConfigureGame(::rd::EngineConfig& config) \
 { \
 	ConfigureFunction(config); \
 }

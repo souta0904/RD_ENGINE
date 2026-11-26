@@ -1,10 +1,6 @@
 #include "runtime/GameModule.h"
 #include "core/Log.h"
-#include "utility/StringUtility.h"
-
-#ifndef NOMINMAX
-#define NOMINMAX
-#endif
+#include "core/utility/StringUtility.h"
 #include <Windows.h>
 
 namespace rd::GameModule

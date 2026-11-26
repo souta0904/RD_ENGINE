@@ -11,15 +11,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\rhi\device\GraphicsDevice.cpp" />
     <ClCompile Include="src\GameLauncher.cpp" />
     <ClCompile Include="src\runtime\GameModule.cpp" />
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\core\Log.cpp" />
-    <ClCompile Include="src\utility\StringUtility.cpp" />
+    <ClCompile Include="src\core\utility\StringUtility.cpp" />
     <ClCompile Include="src\platform\Window.cpp" />
-    <ClCompile Include="src\utility\JsonUtility.cpp" />
+    <ClCompile Include="src\core\utility\JsonUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\rhi\device\GraphicsDevice.h" />
     <ClInclude Include="src\GameLauncher.h" />
     <ClInclude Include="src\runtime\GameModule.h" />
     <ClInclude Include="src\Engine.h" />
@@ -27,9 +29,9 @@
     <ClInclude Include="src\core\Assert.h" />
     <ClInclude Include="src\core\Log.h" />
     <ClInclude Include="src\EngineConfig.h" />
-    <ClInclude Include="src\utility\StringUtility.h" />
+    <ClInclude Include="src\core\utility\StringUtility.h" />
     <ClInclude Include="src\platform\Window.h" />
-    <ClInclude Include="src\utility\JsonUtility.h" />
+    <ClInclude Include="src\core\utility\JsonUtility.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
@@ -76,7 +78,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;RD_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;WIN32_LEAN_AND_MEAN;_DEBUG;RD_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)RD_ENGINE\src;$(SolutionDir)RD_ENGINE\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -97,7 +99,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;RD_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;WIN32_LEAN_AND_MEAN;NDEBUG;RD_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)RD_ENGINE\src;$(SolutionDir)RD_ENGINE\external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

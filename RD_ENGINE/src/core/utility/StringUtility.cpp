@@ -1,4 +1,4 @@
-#include "StringUtility.h"
+#include "core/utility/StringUtility.h"
 #include <Windows.h>
 
 namespace rd::StringUtility

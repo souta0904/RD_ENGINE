@@ -1,9 +1,9 @@
-#include "Log.h"
-#include "utility/StringUtility.h"
-#include <Windows.h>
+#include "core/Log.h"
+#include "core/utility/StringUtility.h"
 #include <filesystem>
 #include <fstream>
 #include <mutex>
+#include <Windows.h>
 
 namespace rd::Log
 {
@@ -31,7 +31,7 @@ namespace rd::Log
 	void Initialize(const std::string& path)
 	{
 		std::lock_guard lock(sMutex);
-		std::filesystem::path p(path);
+		std::filesystem::path p(StringUtility::ToWide(path));
 		if (p.has_parent_path())
 		{
 			std::filesystem::create_directories(p.parent_path());

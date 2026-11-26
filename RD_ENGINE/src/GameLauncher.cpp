@@ -2,10 +2,6 @@
 #include "Engine.h"
 #include "core/Log.h"
 #include "runtime/GameModule.h"
-
-#ifndef NOMINMAX
-#define NOMINMAX
-#endif
 #include <Windows.h>
 
 namespace rd
