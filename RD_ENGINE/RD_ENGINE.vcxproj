@@ -11,6 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameLauncher.cpp" />
+    <ClCompile Include="src\runtime\GameModule.cpp" />
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\core\Log.cpp" />
     <ClCompile Include="src\utility\StringUtility.cpp" />
@@ -18,6 +20,8 @@
     <ClCompile Include="src\utility\JsonUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameLauncher.h" />
+    <ClInclude Include="src\runtime\GameModule.h" />
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\Api.h" />
     <ClInclude Include="src\core\Assert.h" />
