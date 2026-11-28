@@ -7,4 +7,5 @@
   </Project>
   <Project Path="RD_ENGINE/RD_ENGINE.vcxproj" Id="cc82df25-1bec-4861-af07-8ba7ca6a0af6" />
   <Project Path="Sandbox/Sandbox.vcxproj" Id="31a4d7c5-2dec-4cf8-9af5-1a4945068039" />
+  <Project Path="Test/Test.vcxproj" Id="418a15ed-69c3-4edc-acd5-d120ca1a61b2" />
 </Solution>

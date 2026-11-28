@@ -21,6 +21,8 @@
     <ClCompile Include="src\core\utility\JsonUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\math\MathUtility.h" />
+    <ClInclude Include="src\math\Vector2.h" />
     <ClInclude Include="src\rhi\device\GraphicsDevice.h" />
     <ClInclude Include="src\GameLauncher.h" />
     <ClInclude Include="src\runtime\GameModule.h" />
